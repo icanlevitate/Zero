@@ -243,15 +243,15 @@ void Music(std::string id) {
 
 }
 
-
+// Fixed ChangeChar Function
 void ChangeChar(std::string plr, std::string id)
 {
-	std::string idxd = "https://assetgame.roblox.com/Asset/CharacterFetch.ashx?userId=" + id + "&placeId=0";
+	std::string idxd = id;
 	lua_getglobal(lua_State, "game");
 	lua_getfield(lua_State, -1, "Players");
 	lua_getfield(lua_State, -1, plr.c_str());
 	lua_pushstring(lua_State, idxd.c_str());
-	lua_setfield(lua_State, -2, "CharacterAppearance");
+	lua_setfield(lua_State, -2, "CharacterAppearanceId");
 	lua_pcall(lua_State, 1, 0, 0);
 	lua_getglobal(lua_State, "game");
 	lua_getfield(lua_State, -1, "Players");
@@ -263,7 +263,6 @@ void ChangeChar(std::string plr, std::string id)
 	lua_pcall(lua_State, 1, 0, 0);
 
 }
-
 void ForceField(std::string ye, std::string inst) {
 	lua_getglobal(lua_State, "game");
 	lua_getfield(lua_State, -1, "Players");
